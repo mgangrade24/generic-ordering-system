@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-expand-sm   navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/register">Register</a>
+        </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/login">Login</a>
+      </li>
+      </ul>
+      <div class="social-part">
+        <a href="https://github.com/mgangrade24"><i class="fa fa-github" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/in/mousam-gangrade/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+        <a href="mailto: mousam.gangrade999@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </nav>
+  <div class="row container-fluid text-center mx-auto" style="margin-top: 100px;">
+    <div class="mx-auto d-block col-md-6">
+        <img src="{{ url_for('static', filename='images/login.svg') }}" class="img-fluid mx-auto d-block text-center" style="width: 80%;;" alt="Responsive image">
+    </div>
+  <div class="col-md-6 mh-100">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+        <h4 class="card-title mt-3 text-center">Log In</h4><hr>
+
+        <form action="{{ url_for('login') }}" method="post">
+
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+             </div>
+            <input name="email" class="form-control" placeholder="Email address" type="email" required>
+        </div> <!-- form-group// -->
+
+
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+            </div>
+            <input name="password" class="form-control" placeholder="Password" type="password" required>
+        </div> <!-- form-group// -->
+                                      
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block"> Log In  </button>
+        </div> <!-- form-group// -->      
+        <p class="text-center">New User? <a href="/register">Register</a> </p>                                                                 
+    </form>
+    {% include "includes/_message.html" %}
+    </article>
+    </div> <!-- card.// -->
+    
+    </div> 
+    <!--container end.//-->
+</div>
+{% endblock %}

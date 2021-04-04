@@ -1,0 +1,144 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<title>Support</title>
+<link rel="icon" href="{{ url_for('static', filename='images/icon.jpg') }}" type="image/icon type">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://colorlib.com/etc/bootstrap-sidebar/sidebar-09/css/style.css">
+
+<style>
+    
+    .order-form .container {
+      color: #4c4c4c;
+      padding: 20px;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1);
+    }
+
+    .order-form-label {
+      margin: 8px 0 0 0;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .order-form-input {
+      width: 100%;
+      padding: 8px 8px;
+      border-width: 1px !important;
+      border-style: solid !important;
+      border-radius: 3px !important;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      line-height: 1.2em;
+      background-color: transparent;
+      border-color: #cccccc;
+    }
+
+    .btn-submit:hover {
+      background-color: #090909 !important;
+    }
+</style>
+
+</head>
+<body>
+<div class="wrapper d-flex align-items-stretch">
+<nav id="sidebar">
+<div class="custom-menu">
+<button type="button" id="sidebarCollapse" class="btn btn-primary">
+</button>
+</div>
+<div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+<div class="user-logo">
+<div class="img" style="background-image: url({{ url_for('static', filename='images/user.svg') }});"></div>
+<h3>{{ userdetails.name }}</h3>
+</div>
+</div>
+<ul class="list-unstyled components mb-5">
+<li class="">
+<a href="/order"><span class="fa fa-wpforms mr-3"></span> Order Form</a>
+</li>
+<li>
+<a href="/orders"><span class="fa fa-shopping-bag mr-3"></span> Past Orders</a>
+</li>
+<li>
+<a href="#"><span class="fa fa-cog mr-3"></span> Settings</a>
+</li>
+<li class="active">
+<a href="/support"><span class="fa fa-support mr-3"></span> Support</a>
+</li>
+<li>
+<a href="/login/logout"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+</li>
+</ul>
+</nav>
+
+
+
+<div id="content" class="p-4 p-md-5 pt-5">
+
+    
+  <form class="order-form my-4 mx-4" action="{{ url_for('support') }}" method="post">
+    <div class="container pt-4">
+        {% include "includes/_message.html" %}
+        <div class="row">
+            <div class="col-12">
+              <h1>Support</h1>
+              <span>Feel free to contact us. Write your query here.</span>
+              <hr class="mt-1">
+        </div>
+    </div>
+
+    <div class="col-12">
+
+        
+
+
+        <div class="row mx-4">
+          <div class="col-12">
+              <label class="order-form-label">Subject of the query</label>
+            </div>
+            <div class="col-12">
+              <input class="order-form-input" placeholder="Subject" name="subject">
+            </div>
+        </div>
+
+        <div class="row mx-4">
+            <div class="col-12">
+                <label class="order-form-label">Write to us </label>
+              </div>
+              <div class="col-12">
+                <textarea class="order-form-input" placeholder="Feel free to tell us!" name="query" style="height: 200px;"></textarea>
+              </div>
+          </div>
+
+
+        <div class="row mt-3">
+          <div class="col-12">
+            <button type="submit" id="btnSubmit" class="btn btn-dark d-block mx-auto btn-submit" >Submit</button>
+          </div>
+        </div>
+
+        
+
+      </div>
+</form>
+
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="../../assets/js/vendor/popper.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<script src="https://colorlib.com/etc/bootstrap-sidebar/sidebar-09/js/main.js"></script>
+<script>
+    // Data Picker Initialization
+    $('.datepicker').pickadate();
+</script>
+</body>
+</html>

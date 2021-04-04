@@ -1,0 +1,108 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<title>Past Orders</title>
+<link rel="icon" href="{{ url_for('static', filename='images/icon.jpg') }}" type="image/icon type">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://colorlib.com/etc/bootstrap-sidebar/sidebar-09/css/style.css">
+
+
+
+</head>
+<body>
+<div class="wrapper d-flex align-items-stretch">
+<nav id="sidebar">
+<div class="custom-menu">
+<button type="button" id="sidebarCollapse" class="btn btn-primary">
+</button>
+</div>
+<div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+<div class="user-logo">
+<div class="img" style="background-image: url({{ url_for('static', filename='images/user.svg') }});"></div>
+<h3>{{ userdetails['name'] }}</h3>
+</div>
+</div>
+<ul class="list-unstyled components mb-5">
+<li class="">
+<a href="/order"><span class="fa fa-wpforms mr-3"></span> Order Form</a>
+</li>
+<li class="active">
+<a href="/orders"><span class="fa fa-shopping-bag mr-3"></span> Past Orders</a>
+</li>
+<li>
+<a href="#"><span class="fa fa-cog mr-3"></span> Settings</a>
+</li>
+<li>
+<a href="/support"><span class="fa fa-support mr-3"></span> Support</a>
+</li>
+<li>
+<a href="/login/logout"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
+</li>
+</ul>
+</nav>
+
+
+
+<div id="content" class="p-4 p-md-5 pt-5 ">
+
+    <div class=" container">
+        <div class="">
+          <h1>All Orders</h1>
+          <span>You can check all the previously made orders.</span>
+          <hr class="mt-1">
+        </div>
+    </div>
+
+    {% include "includes/_message.html" %}
+{% for row in orders %}
+    <div class="card container shadow">
+        <div class="card-header row">
+          <div class="col-4">
+            <strong>Order ID: {{ row.orderid }}</strong>
+          </div>
+          <div class="col-4">
+            <strong>Time: {{ row.datetime }}</strong>
+          </div>
+          <div class="col-4">
+            <strong>Payment: {% if row.payment == 1 %} <span style="color: green;">Complete</span>{% endif %}
+                {% if row.payment == 0 %} <span style="color: red;">Pending</span>{% endif %}</strong>
+          </div>
+        </div>
+        <div class="card-body row">
+          <div class="col-6">
+            <p><strong style="color: black;">Shipped To:</strong>
+                {{row.name}}</p>
+                <p><strong style="color: black;">Address: </strong>{{row.streetadd}}
+                {{row.streetadd2}}, 
+                {{row.city}} ({{row.zip}}), {{row.region}}, 
+                {{row.country}}</p>
+                <p><strong style="color: black;">Phone: </strong>{{userdetails['phone']}}
+          </div>
+          <div class="col-6">
+            <p><strong style="color: black;">Quantity:</strong>
+                {{row.quant}} Litres</p>
+                <p><strong style="color: black;">Rate: </strong>$45 Per Litre</p>
+                <h5><p><strong style="color: black;">Total (Inclusive of 18% GST): </strong></p><span style="color: green;">${{row.total}} + ${{row.tax}} = <strong>${{row.grandtotal}}</strong></span></h5>
+          </div>
+        </div>
+      </div><br>
+    {% endfor %}
+</div>
+</div>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="../../assets/js/vendor/popper.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<script src="https://colorlib.com/etc/bootstrap-sidebar/sidebar-09/js/main.js"></script>
+<script>
+    // Data Picker Initialization
+    $('.datepicker').pickadate();
+</script>
+</body>
+</html>
